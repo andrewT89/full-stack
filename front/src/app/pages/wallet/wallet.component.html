@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button [routerLink]="['create']" type="button" class="btn
+            waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear Billetera
+          </button>
+        </div>
+
+        <div class="col-12 col-md-auto" *ngIf="wallets?.length === 0">
+          <nav class="d-flex justify-content-center">
+            <span> <strong> No hay registros para mostrar </strong> </span>
+          </nav>
+        </div>
+
+        <table *ngIf="wallets?.length > 0" class="table table-hover">
+          <thead>
+            <tr>
+              <th> Documento </th>
+              <th> Celular </th>
+              <th> Saldo </th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let wall of wallets">
+              <td> {{ wall.identification }} </td>
+              <td> {{ wall.phoneNumber}} </td>
+              <td> {{ wall.balance}} </td>
+              <td> {{ wall.createdAt | date }} </td>
+              <td>
+                <button [routerLink]="[wall._id]" class="btn
+                  btn-primary">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button (click)="viewDetails(wall)" class="btn btn-info">
+                  <i class="fa fa-eye"></i>
+                </button>
+
+                <button (click)="deleteWallet(wall._id)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="col-12 col-md-auto" *ngIf="wallets?.length > 0">
+          <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="changeOfSet(-5)">Anterior</a></li>
+              <li class="page-item"><a class="page-link" (click)="changeOfSet(5)">Siguiente</a></li>
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

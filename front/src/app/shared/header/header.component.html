@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/home">Wallet Software</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wallet</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/wallets"> Billeteras </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" routerLink="/products">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="cursor: pointer;" (click)="logout()">Cerrar sesion</a>
+      </li>
+    </ul>
+    <ul class="navbar-right">
+      <li><a id="cart" style="cursor: pointer;" (click)="cartOpen()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+    </ul>
+  </div>
+</nav>
+
+<app-cart *ngIf="openCart"></app-cart>
